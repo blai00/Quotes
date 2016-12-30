@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Quotes</title>
+</head>
+<body>
+	<h2>Welcome {{users.first_name}}</h2>
+	<h3><a href='logout'>Logout</a></h3>
+	<h2> Quotable Quotes</h2>
+		{% for quote in quotes %}
+			<h2>{{quote.author}}</h2>
+			<p>{{quote.quote}}</p>
+			<!-- <h4>Posted by <a href ='/{{users.id}}/user/show'>{{users.first_name}}</a></h4> -->
+		{% endfor %}
+	<h2>Contribute a Quote</h2>
+	{% if messages %}
+		{% for message in messages %}
+			<p>{{message}}</p>
+		{% endfor %}
+	{% endif %}
+	<form action = '/submit_quote' method = 'post'>
+		{% csrf_token %}
+		Quoted By:<input type = 'text' name ='author'>
+		Quote:<input type = 'text' name = 'quote'>
+		<input type = 'submit' name ='Submit'>
+	</form> 
+
+
+
+
+
