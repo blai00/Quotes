@@ -29,7 +29,7 @@ def log_user_in(request, user):
 		'last_name' : user.last_name,
 		'email' : user.email,
 }
-	return redirect('/quotes' )
+	return redirect('/quotes')
 
 def logout(request):
 	request.session.pop('user')
@@ -41,6 +41,7 @@ def quotes(request):
 	context = { 
 		"user" : user,
 		"quote" :quote	}
+
 	if not 'user' in request.session:
 			return redirect('/')
 	return render(request, 'dash/quotes.html' , context)

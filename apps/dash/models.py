@@ -41,7 +41,7 @@ class QuoteManager(models.Manager):
 		errors = self.inputs(request)
 		if len(errors) > 0:
 			return (False, errors)
-		quote = self.create(quotes = request.POST['quote'], author = request.POST['author'])
+		quote = self.create(quotes = request.POST['quote'], auther = request.POST['author'])
 		return (True, quote)
 	
 	def inputs(self,request):
@@ -65,7 +65,7 @@ class User(models.Model):
 class Quote(models.Model):
 	quotes = models.CharField(max_length = 255)
 	auther = models.CharField(max_length = 255)
-	# userss = models.ForeignKey(User)
+	# users = models.ForeignKey(User)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	QuoteManager= QuoteManager()
